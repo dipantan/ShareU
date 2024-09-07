@@ -1,37 +1,55 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import React from "react";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { Tabs } from "expo-router";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Text } from "react-native-paper";
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const Home = () => {
+  console.log("Home");
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
+    <>
+      <Text
+        variant="titleLarge"
+        style={{
+          backgroundColor: "#1d2140",
+          textAlign: "center",
+          fontFamily: "serif",
+          fontWeight: "bold",
+          color: "white",
         }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
+      >
+        ShareU
+      </Text>
+      <Tabs
+        screenOptions={{
+          tabBarActiveTintColor: "white",
+          headerShown: false,
+          tabBarStyle: { backgroundColor: "#2d3466" },
         }}
-      />
-    </Tabs>
+        sceneContainerStyle={{ backgroundColor: "#1d2140" }}
+      >
+        <Tabs.Screen
+          name="index"
+          options={{
+            title: "Home",
+            tabBarIcon: ({ color }) => (
+              <FontAwesome size={28} name="home" color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="earn"
+          options={{
+            title: "Earn",
+            tabBarIcon: ({ color }) => (
+              <FontAwesome size={28} name="rupee" color={color} />
+            ),
+          }}
+        />
+      </Tabs>
+    </>
   );
-}
+};
+
+export default Home;

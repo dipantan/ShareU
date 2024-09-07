@@ -1,70 +1,198 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, ScrollView, StyleSheet, View } from "react-native";
+import React from "react";
+import { Card, Divider, List, Text } from "react-native-paper";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
+const index = () => {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <ScrollView style={styles.container}>
+      <View style={{ rowGap: 16, marginBottom: 16 }}>
+        <Card>
+          <Card.Content
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <Text>Level 1</Text>
+            <Text>Income Plan</Text>
+            <Text>25 PAISA</Text>
+          </Card.Content>
+        </Card>
+
+        <Card>
+          <Card.Content
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <Text>Level 2</Text>
+            <Text>Income Plan</Text>
+            <Text>50 PAISA</Text>
+          </Card.Content>
+        </Card>
+
+        <Card>
+          <Card.Content
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <Text>Level 3</Text>
+            <Text>Income Plan</Text>
+            <Text>75 PAISA</Text>
+          </Card.Content>
+        </Card>
+      </View>
+
+      <Divider />
+
+      {/* <Text
+        variant="bodyMedium"
+        style={{ marginTop: 8, color: "white", textAlign: "center" }}
+      >
+        My Teams
+      </Text> */}
+
+      <List.Section
+        title="My Teams"
+        titleStyle={{ color: "white", textAlign: "center" }}
+        style={{ marginTop: -6, backgroundColor: "transparent" }}
+      >
+        <List.Accordion
+          title="Team 1"
+          style={{
+            borderRadius: 8,
+            backgroundColor: "white",
+          }}
+          theme={{ colors: { background: "transparent" } }}
+          left={(props) => (
+            <AntDesign
+              name="team"
+              size={24}
+              style={props.style}
+              color={props.color}
+            />
+          )}
+        >
+          <List.Item
+            title="John Doe"
+            style={styles.listItem}
+            description="Member"
+            right={() => <Text style={{ color: "green" }}>+10</Text>}
+            left={() => (
+              <Image
+                source={{ uri: "https://avatar.iran.liara.run/public" }}
+                style={styles.image}
+              />
+            )}
+          />
+          <List.Item
+            title="Jane Doe"
+            style={styles.listItem}
+            left={() => (
+              <Image
+                source={{ uri: "https://avatar.iran.liara.run/public" }}
+                style={styles.image}
+              />
+            )}
+            description="Member"
+            right={() => <Text style={{ color: "green" }}>+20</Text>}
+          />
+        </List.Accordion>
+
+        <List.Accordion
+          title="Team 2"
+          style={{
+            borderRadius: 8,
+            backgroundColor: "white",
+            marginTop: 16,
+          }}
+          theme={{ colors: { background: "transparent" } }}
+          left={(props) => (
+            <AntDesign
+              name="team"
+              size={24}
+              style={props.style}
+              color={props.color}
+            />
+          )}
+        >
+          <List.Item
+            title="Biyanka Doe"
+            style={styles.listItem}
+            left={() => (
+              <Image
+                source={{ uri: "https://avatar.iran.liara.run/public" }}
+                style={styles.image}
+              />
+            )}
+          />
+          <List.Item
+            title="Maria Doe"
+            style={styles.listItem}
+            left={() => (
+              <Image
+                source={{ uri: "https://avatar.iran.liara.run/public" }}
+                style={styles.image}
+              />
+            )}
+          />
+        </List.Accordion>
+
+        <List.Accordion
+          title="Team 3"
+          style={{
+            borderRadius: 8,
+            backgroundColor: "white",
+            marginTop: 16,
+          }}
+          theme={{ colors: { background: "transparent" } }}
+          left={(props) => (
+            <AntDesign
+              name="team"
+              size={24}
+              style={props.style}
+              color={props.color}
+            />
+          )}
+        >
+          <List.Item
+            title="Rex Doe"
+            style={styles.listItem}
+            left={() => (
+              <Image
+                source={{ uri: "https://avatar.iran.liara.run/public" }}
+                style={styles.image}
+              />
+            )}
+          />
+          <List.Item
+            title="Walter Doe"
+            style={styles.listItem}
+            left={() => (
+              <Image
+                source={{ uri: "https://avatar.iran.liara.run/public" }}
+                style={styles.image}
+              />
+            )}
+          />
+        </List.Accordion>
+      </List.Section>
+
+      <Divider style={{ marginTop: 16 }} />
+    </ScrollView>
   );
-}
+};
+
+export default index;
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    padding: 16,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  listItem: {
+    backgroundColor: "white",
+    // marginBottom: 8,
+    padding: 8,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  image: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
   },
 });
